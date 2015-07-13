@@ -39,13 +39,13 @@ describe "the programmers index page" do
 end
 
 # BONUS: Create a partial that renders a single attribute of a programmer
-xdescribe "the attribute partial" do
+describe "the attribute partial" do
   let(:programmer) { FactoryGirl.create(:programmer) }
 
   it "renders any attribute of the programmer" do
     programmer.attributes_for_partial.each do |attribute|
       render "programmers/attribute", {:programmer => programmer, :attribute => attribute}
-      expect(response).to include(programmer.send(attribute))
+      expect(response).to include(programmer.send(attribute).to_s)
     end
   end
 
